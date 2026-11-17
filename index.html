@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Varnan Sarangian</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Instrument+Sans:wght@400;600&display=swap">
+
+  <style>
+    :root {
+      /* green colour palette */
+      --green-1: #0B3D0B;
+      --green-2: #2E7D32;
+      --green-3: #43A047;
+      --green-4: #66BB6A;
+      --green-5: #81C784;
+
+      /* light colours */
+      --bg: #fbfdfb;
+      --text: #1b261b;
+      --muted: #5a665a;
+      --heading: var(--green-1);
+      --link: var(--green-2);
+      --line: var(--green-4);
+
+      --font-main: "Newsreader", Georgia, serif;
+      --font-small: "Instrument Sans", Arial, sans-serif;
+    }
+
+    /*
+      Dark colours when the <html> tag has class="dark".
+      Other background colour schemes to try:
+                      --bg      --text    --muted
+        forest        #0d1710   #dbe5db   #97a897
+        charcoal      #1c1c1e   #e5e5e7   #a1a1a6
+        near black    #0b0b0b   #e6e6e6   #9b9b9b
+        dim slate     #22272e   #d1d7e0   #8b949e
+        navy          #0f172a   #e2e8f0   #94a3b8
+    */
+    .dark {
+      --bg: #0d1117;
+      --text: #e6edf3;
+      --muted: #8d96a0;
+      --heading: var(--green-5);
+      --link: var(--green-4);
+      --line: var(--green-2);
+      color-scheme: dark;
+    }
+
+    body {
+      max-width: 44rem;
+      margin: 0 auto;
+      padding: 6rem 2rem 4rem;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-main);
+      font-size: 1.2rem;
+      line-height: 1.65;
+    }
+
+    /* left side green gradient strip */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 15px;
+      background: linear-gradient(
+        var(--green-1) 20%,
+        var(--green-2) 20% 40%,
+        var(--green-3) 40% 60%,
+        var(--green-4) 60% 80%,
+        var(--green-5) 80%
+      );
+    }
+
+    ::selection {
+      background: var(--green-5);
+      color: var(--green-1);
+    }
+
+    h1 {
+      margin: 0 0 1rem;
+      font-size: 3rem;
+      font-weight: 500;
+      line-height: 1.1;
+      color: var(--heading);
+    }
+
+    h2 {
+      margin: 3.5rem 0 1.25rem;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--heading);
+    }
+
+    h3 {
+      margin: 2rem 0 1rem;
+      font-size: 1.2rem;
+      font-weight: 500;
+      font-style: italic;
+      color: var(--heading);
+    }
+
+    header {
+      margin-bottom: 2.5rem;
+    }
+
+    /* to emphasize any text, follows generic green theme */
+    strong {
+      font-weight: 600;
+      color: var(--heading);
+    }
+
+    nav, .authors, .links, footer {
+      font-family: var(--font-small);
+      font-size: .95rem;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: underline;
+      text-decoration-color: var(--line);
+      text-underline-offset: 3px;
+    }
+
+    a:hover {
+      text-decoration-color: var(--link);
+    }
+
+    a:focus-visible {
+      outline: 2px solid var(--green-3);
+      outline-offset: 2px;
+    }
+
+    nav a {
+      margin-right: 1.25rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* papers */
+    .papers {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .papers li {
+      margin-bottom: 1.75rem;
+      padding-left: 1rem;
+      border-left: 2px solid var(--line);
+    }
+
+    .title {
+      font-weight: 500;
+      line-height: 1.35;
+      color: var(--heading);
+    }
+
+    .authors {
+      color: var(--muted);
+    }
+
+    /* coauthors with a link stay grey, with a thin green underline */
+    .authors a {
+      color: inherit;
+    }
+
+    .authors a:hover {
+      color: var(--link);
+    }
+
+    .me {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* journal or conference name */
+    .venue {
+      font-size: 1.05rem;
+      font-style: italic;
+      line-height: 1.45;
+    }
+
+    .links a {
+      display: inline-block;
+      margin: .5rem .4rem 0 0;
+      padding: .1rem .6rem;
+      font-size: .8rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+    }
+
+    .links a:hover {
+      background: var(--link);
+      border-color: var(--link);
+      color: var(--bg);
+    }
+
+    footer {
+      margin-top: 4rem;
+      font-size: .85rem;
+      color: var(--muted);
+    }
+
+    /* big screens: make everything a little larger */
+    @media (min-width: 1400px) {
+      html { font-size: 112.5%; }
+    }
+
+    /* phones */
+    @media (max-width: 600px) {
+      body {
+        margin: 0;
+        padding: 3rem 1.25rem 3rem 1.75rem;
+        font-size: 1.1rem;
+      }
+      body::before { width: 6px; }
+      h1 { font-size: 2.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Varnan Sarangian</h1>
+    <!-- <nav>
+      <a href="">Google Scholar</a>
+      <a href="">GitHub</a>
+    </nav> -->
+  </header>
+
+  <main>
+    <p>
+      I'm a third-year PhD student in the Department of Statistics and Actuarial Science
+      at the University of Waterloo, where I'm fortunate to be advised by
+      <a href="https://aukosh.github.io/">Dr. Aukosh Jagannath</a> and
+      <a href="https://uwaterloo.ca/statistics-and-actuarial-science/profiles/shojaeddin-chenouri">Dr. Shoja Chenouri</a>.
+      My research lies in probability theory and its applications.
+      My PhD is supported in part by an Ontario Graduate Scholarship (OGS).
+    </p>
+    <p>
+      Before my PhD, I completed a Bachelor of Computer Science at the University of Waterloo.
+    </p>
+    <p>
+      <strong>Research interests:</strong> high-dimensional training dynamics, median-of-means estimation, distributionally robust optimization
+    </p>
+    <p>
+      <strong>CV:</strong> <a href="" download>Download</a> (PDF, updated November 2026)<br>
+      <strong>Email:</strong> v3sarang at uwaterloo dot ca
+    </p>
+
+    <h2>Papers</h2>
+
+    <!-- Ordered by newest paper goes at the top of each list. -->
+    <h3>Preprints</h3>
+    <ul class="papers">
+      <li>
+        <div class="title">High-dimensional limit theorems for adaptive variants of SGD I: Ballistic limits</div>
+        <div class="authors">
+          <a href="https://aukosh.github.io/">Aukosh Jagannath</a> and 
+          <span class="me">Varnan Sarangian</span></div>
+        <div class="venue">2026</div>
+        <div class="links">
+          <a href="https://arxiv.org/abs/2611.19059">arXiv</a>
+        </div>
+      </li>
+    </ul>
+
+    <h3>Published</h3>
+    <ul class="papers">
+      <li>
+        <div class="title">High-dimensional limit theorems for SGD: Momentum and Adaptive Step-sizes</div>
+        <div class="authors">
+          <a href="https://aukosh.github.io/">Aukosh Jagannath</a>, 
+          <a href="https://uwaterloo.ca/statistics-and-actuarial-science/contacts/taj-jones-mccormick">Taj Jones-McCormick</a>, and 
+          <span class="me">Varnan Sarangian</span></div>
+        <div class="venue">International Conference on Learning Representations (ICLR 2026)</div>
+        <div class="links">
+          <a href="https://arxiv.org/abs/2511.03952">arXiv</a>
+          <a href="https://proceedings.iclr.cc/paper_files/paper/2026/hash/f8b0eb1c1c810e405513d86246b126d0-Abstract-Conference.html">Proceedings</a>
+        </div>
+      </li>
+    </ul>
+  </main>
+
+  <footer>
+    Last updated November 2026
+  </footer>
+
+</body>
+</html>
